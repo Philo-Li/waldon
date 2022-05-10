@@ -112,6 +112,7 @@ const Edit = () => {
 
       setTimeout(() => {
         setSuccessInfo('');
+        history.push(`/article/${articleToShow.id}`);
       }, 2000);
       setLoading(false);
     } catch (e) {
