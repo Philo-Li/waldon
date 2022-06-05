@@ -30,7 +30,7 @@ const LoadMore = ({
         <div className="row-item-2">
           <button className="more-photos-btn" type="button" onClick={clickFetchMore}>
             <i className="bi bi-three-dots" />
-            More photos
+            Load more
           </button>
         </div>
       </div>

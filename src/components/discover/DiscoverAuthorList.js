@@ -2,6 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import Masonry from 'react-masonry-css';
+import LoadMore from '../others/button/LoadMore';
 import ProfileDetailCard from './ProfileDetailCard';
 
 const breakpointColumnsObj = {
@@ -10,7 +11,7 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
-const DiscoverAuthorList = ({ allUsers }) => {
+const DiscoverAuthorList = ({ allUsers, clickFetchMore, loading, hasNextPage }) => {
   if (!allUsers) {
     return (
       <div className="col-item-3">
@@ -41,6 +42,11 @@ const DiscoverAuthorList = ({ allUsers }) => {
           </Card>
         ))}
       </Masonry>
+      <LoadMore
+        hasNextPage={hasNextPage}
+        loading={loading}
+        clickFetchMore={clickFetchMore}
+      />
     </div>
   );
 };

@@ -14,7 +14,8 @@ const override = css`
 
 const Discover = () => {
   const [allUsers, setAllUsers] = useState();
-  const { users } = useUsers({
+  const [loading, setLoading] = useState(false);
+  const { users, fetchMore, hasNextPage } = useUsers({
     first: 30,
   });
 
@@ -25,8 +26,14 @@ const Discover = () => {
         : [];
 
       setAllUsers(temp);
+      setLoading(false);
     }
   }, [users]);
+
+  const clickFetchMore = () => {
+    fetchMore();
+    setLoading(true);
+  };
 
   if (allUsers === undefined) {
     return (
@@ -52,14 +59,19 @@ const Discover = () => {
       </div>
       <div className="p-3">
         <div className="container-profile profile-item subheader">
-          <p>Authors</p>
+          <p>Articles</p>
         </div>
-        <DiscoverAuthorList allUsers={allUsers} category="nature" />
       </div>
       <div className="p-3">
         <div className="container-profile profile-item subheader">
-          <p>Articles</p>
+          <p>Authors</p>
         </div>
+        <DiscoverAuthorList
+          allUsers={allUsers}
+          clickFetchMore={clickFetchMore}
+          loading={loading}
+          hasNextPage={hasNextPage}
+        />
       </div>
     </div>
   );
