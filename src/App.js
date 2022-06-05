@@ -27,7 +27,10 @@ import About from './components/about/About';
 import AboutZh from './components/about/AboutZh';
 import ContactUs from './components/ContactUs';
 import Create from './components/create/Create';
-import Edit from './components/create/Edit';
+// import Edit from './components/create/Edit';
+import CreateArticleRTF from './components/create-article-rtf/CreateArticle';
+import CreateArticleMD from './components/create-article-md/CreateArticle';
+import Edit from './components/create-article-rtf/EditArticle';
 import logo from './img/logo/logo-w-dark-192.jpg';
 import './index.css';
 import TokenExpireModal from './components/others/TokenExpireModal';
@@ -148,6 +151,12 @@ const App = () => {
             </Route>
             <Route path="/create" exact>
               <Create />
+            </Route>
+            <Route path="/create/article" exact>
+              <CreateArticleRTF />
+            </Route>
+            <Route path="/create/article_md" exact>
+              <CreateArticleMD />
             </Route>
             <Route path="/search" render={() => (<SearchPage />)}>
               {/* <SearchPage authorizedUser={authorizedUser} /> */}

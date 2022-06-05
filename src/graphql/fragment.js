@@ -8,6 +8,7 @@ export const ARTICLE_DETAILS = gql`
     slug
     summary
     content
+    format
     tag
     author
     viewCount

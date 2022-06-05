@@ -1135,6 +1135,10 @@
   color: black;
 }
 
+.mode-card-max-height {
+  max-height: 300px;
+}
+
 body {
   height: 100vh;
   scroll-behavior: smooth;

@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { css } from '@emotion/react';
-import { nanoid } from 'nanoid';
+import { Card } from 'react-bootstrap';
+import Masonry from 'react-masonry-css';
 import PacmanLoader from 'react-spinners/PacmanLoader';
-import CreateContainer from './CreateContainer';
-import useCreateArticle from '../../hooks/useCreateArticle';
-import config from '../../config';
+import markdown from '../../img/article-type/markdown.svg';
+import richText from '../../img/article-type/richText.svg';
+
+const RICH_TEXT_COVER = richText;
+const MARKDOWN_COVER = markdown;
 
 const override = css`
   display: flex;
@@ -17,32 +19,15 @@ const override = css`
   margin-bottom: 6rem;
 `;
 
-const baseUrl = config.waldonApi;
-
-const initialValues = {
-  title: '',
-  tag: '',
-  license: 'CC BY',
-};
-
-const editorContentInit = {
-  entityMap: {},
-  blocks: [{
-    key: '637gr', text: 'Type here.', type: 'unstyled', depth: 0, inlineStyleRanges: [], entityRanges: [], data: {},
-  }],
+const breakpointColumnsObj = {
+  default: 2,
+  800: 2,
+  500: 1,
 };
 
 const Create = () => {
-  const [errorInfo, setErrorInfo] = useState('');
-  const [successInfo, setSuccessInfo] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [createArticle, result] = useCreateArticle();
-  const [editorState, setEditorState] = useState(editorContentInit);
-  const userId = localStorage.getItem('userId');
-  const [license, setLicense] = useState('CC BY');
-  const [cover, setCover] = useState('');
-  const [articleId, setArticleId] = useState('');
   const history = useHistory();
+  const userId = localStorage.getItem('userId');
 
   if (!userId) {
     return (
@@ -53,62 +38,62 @@ const Create = () => {
   }
 
   useEffect(() => {
-    if (result && result.data) {
-      const tempId = result.data.createArticle.id;
-      setArticleId(tempId);
-      setTimeout(() => {
-        setSuccessInfo('');
-        history.push(`/article/${articleId}`);
-      }, 3000);
-    }
-  }, [result]);
 
-  const onSubmit = async (values) => {
-    const {
-      title, tag,
-    } = values;
+  }, []);
 
-    setLoading(true);
-    try {
-      // get secure url from our server
-
-      const variables = {
-        title,
-        content: JSON.stringify(editorState),
-        license,
-        tag,
-        published: true,
-      };
-      const res = await createArticle(variables);
-      setSuccessInfo('Article created');
-
-      setLoading(false);
-    } catch (e) {
-      setErrorInfo(e.message);
-      setLoading(false);
-      setTimeout(() => { setErrorInfo(''); }, 3000);
-    }
-  };
+  const allModes = [
+    {
+      title: 'Rich Text',
+      path: 'article',
+      mode: 'RTF',
+      cover: RICH_TEXT_COVER,
+    },
+    {
+      title: 'Markdown',
+      path: 'article_md',
+      mode: 'MARKDOWN',
+      cover: MARKDOWN_COVER,
+    },
+  ];
 
   return (
-    <div>
-      {/* <img
-        src={cover}
-        className="article-details-cover"
-        width="100%"
-        height={300}
-        alt="gird item"
-      /> */}
-      <CreateContainer
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        errorInfo={errorInfo}
-        successInfo={successInfo}
-        loading={loading}
-        editorState={editorState}
-        setEditorState={setEditorState}
-        setLicense={setLicense}
-      />
+    <div className="container-col-create">
+      <div className="scrollmenu p-3">
+        <h1 className="container-col-title">
+          Create:
+        </h1>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {allModes.map((mode) => (
+            <Card key={mode.title}>
+              <div
+                className="view zoom overlay"
+                onClick={() => { history.push(`/create/${mode.path}`); }}
+                onKeyPress={() => history.push(`/create/${mode.path}`)}
+                role="button"
+                tabIndex="0"
+              >
+                <img
+                  src={mode.cover}
+                  className="mode-card-max-height"
+                  alt="smaple"
+                />
+                <div className="mask flex-center rgba-blue-light white-text">
+                  <i size="lg" className="bi bi-check-square" />
+                </div>
+              </div>
+              <Card.Title>
+                <div className="flex-center">
+                  {mode.title}
+                </div>
+              </Card.Title>
+            </Card>
+          ))}
+        </Masonry>
+      </div>
     </div>
   );
 };

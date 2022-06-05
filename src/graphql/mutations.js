@@ -65,6 +65,7 @@ export const CREATE_ARTICLE = gql`
     $tag: String
     $cover: String
     $content: String
+    $format: String!
     $license: String
     $published: Boolean!
     ) {
@@ -74,6 +75,7 @@ export const CREATE_ARTICLE = gql`
       tag: $tag
       cover: $cover
       content: $content
+      format: $format
       license: $license
       published: $published
     } ) {
