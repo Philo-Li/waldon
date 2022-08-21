@@ -93,7 +93,7 @@ const App = () => {
             </Nav>
             <Nav className="justify-content-end container-row-0 navbar-link">
               <a className="navbar-link" href="/discover">Discover</a>
-              {/* <a className="navbar-link" href="/about">About</a> */}
+              <a className="navbar-link" href="/about">About</a>
               {!token && <a className="navbar-link" href="/signin">Login</a>}
               {token && (
                 <NavDropdown title="My Account" id="basic-nav-dropdown">
