@@ -66,7 +66,6 @@ const AboutZh = () => {
         src={img0.srcLarge}
         className="article-details-cover"
         width="100%"
-        height={550}
         alt="gird item"
       />
       <div className="container-col">
@@ -93,9 +92,9 @@ const AboutZh = () => {
       <div className="p-3 container-about-row">
         <MyImage image={msgToShow[0].img} />
       </div>
-      <div className="container-col-login">
+      <div className="container-col">
         <div className="col-item-3 licence-msg text-1rem">
-          <p>
+          <p className="margin-tb-5rem">
             如果你有任何疑问或帮助 Waldon 实现更好的体验的改进建议，可以发送邮件到 philoart42@gmail.com.
           </p>
         </div>

@@ -67,12 +67,11 @@ const About = () => {
         src={img0.srcLarge}
         className="article-details-cover"
         width="100%"
-        height={550}
         alt="gird item"
       />
       <div className="container-col">
         <div className="col-item-4">
-          <h1 className="header-bold">About PhiloArt</h1>
+          <h1 className="header-bold">About Waldon</h1>
         </div>
         <Card.Link href="/about/zh" className="col-item-3">中文</Card.Link>
       </div>
@@ -94,14 +93,13 @@ const About = () => {
       <div className="p-3 container-about-row">
         <MyImage image={msgToShow[0].img} />
       </div>
-      <div className="container-col-login">
+      <div className="container-col">
         <div className="col-item-3 licence-msg text-1rem">
-          <p>
-            If you have any questions or suggestions that might make the PhiloArt experience even better, please let us know! You can get in touch with us at philoart42@gmail.com.
+          <p className="margin-tb-5rem">
+            If you have any questions or suggestions that might make the Waldon experience even better, please let us know! You can get in touch with us at philoart42@gmail.com.
           </p>
         </div>
       </div>
-      {/* 这世界战争不停，争吵不息，满目疮痍。我想画一点温暖东西，治愈自己，也治愈他人。 */}
     </div>
   );
 };
