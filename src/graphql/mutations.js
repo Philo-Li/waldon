@@ -65,7 +65,7 @@ export const CREATE_ARTICLE = gql`
     $tag: String
     $cover: String
     $content: String
-    $format: String!
+    $format: String
     $license: String
     $published: Boolean!
     ) {

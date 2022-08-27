@@ -25,7 +25,7 @@ const initialValues = {
 const editorContentInit = {
   entityMap: {},
   blocks: [{
-    key: '637gr', text: 'Type here.', type: 'unstyled', depth: 0, inlineStyleRanges: [], entityRanges: [], data: {},
+    key: '637gr', text: 'Type here.\n\n\n\n\n\n\n\n\n\n', type: 'unstyled', depth: 0, inlineStyleRanges: [], entityRanges: [], data: {},
   }],
 };
 
@@ -74,7 +74,7 @@ const Create = () => {
         license,
         tag,
         published: true,
-        type: 'TXT',
+        format: 'TXT',
       };
       const res = await createArticle(variables);
       setSuccessInfo('Article created');
