@@ -1032,6 +1032,11 @@ container-col-about-icon {
   transition: ease 0.2s;
 }
 
+.margin-tb-2rem {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .article-comment-card a {
   color: black;
 }

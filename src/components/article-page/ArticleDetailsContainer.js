@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Editor } from 'react-draft-wysiwyg';
 import { format } from 'date-fns';
+import MDEditor from '@uiw/react-md-editor';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import useLikeArticle from '../../hooks/useLikeArticle';
 import useUnlikeArticle from '../../hooks/useUnlikeArticle';
@@ -160,11 +161,18 @@ const ArticleDetailContainer = ({ articleToShow, setArticleToShow }) => {
         </div>
       </div>
       <div className="article-details-content container-col-article-details">
+        {articleToShow.format === 'TXT' && (
         <Editor
           toolbarHidden="true"
           initialContentState={articleToShow.editorContent}
           readOnly="true"
         />
+        )}
+        {articleToShow.format === 'MD' && (
+          <div className="margin-tb-2rem">
+            <MDEditor.Markdown source={articleToShow.editorContent} style={{ whiteSpace: 'pre-wrap' }} />
+          </div>
+        )}
       </div>
 
       <div className="container-row-0">

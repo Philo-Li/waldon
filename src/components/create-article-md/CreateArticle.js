@@ -29,12 +29,21 @@ const editorContentInit = {
   }],
 };
 
+const source = `
+## Features
+
+- 📑 Indent line or selected text by pressing tab key, with customizable indentation.
+- 🚘 Automatic list on new lines.
+- 😻 GitHub flavored markdown support.
+- 🌒 Support dark-mode/night-mode **@v3.11.0+**.
+- 💡 Support [next.js](https://github.com/uiwjs/react-md-editor/issues/52#issuecomment-848969341), [Use examples](#support-nextjs) in [next.js](https://nextjs.org/).`;
+
 const Create = () => {
   const [errorInfo, setErrorInfo] = useState('');
   const [successInfo, setSuccessInfo] = useState('');
   const [loading, setLoading] = useState(false);
   const [createArticle, result] = useCreateArticle();
-  const [editorState, setEditorState] = useState(editorContentInit);
+  const [editorState, setEditorState] = useState(source);
   const userId = localStorage.getItem('userId');
   const [license, setLicense] = useState('CC BY');
   const [cover, setCover] = useState('');
