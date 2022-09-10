@@ -37,7 +37,7 @@ const EditModal = ({
         newCover = values.cover;
         await updateArticleCover(variables);
       } else {
-        const imageKey = `${userId}-${nanoid()}`;
+        const imageKey = `${userId}-${nanoid(10)}`;
         const imageUrl = await saveToS3(imageKey, cover[0]);
         const pathToImage = imageUrl.substring(51);
         const srcLarge = `https://cdn.waldon.io/1200x1200/${pathToImage}`;

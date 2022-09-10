@@ -7,6 +7,7 @@ const UpdateAvatar = ({ userId, preview, setPreview }) => {
   const [updateAvatar] = useUpdateAvatar();
   const [errorInfo, setErrorInfo] = useState('');
   const [successInfo, setSuccessInfo] = useState('');
+  // const [cover, setCover] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async () => {
@@ -34,6 +35,8 @@ const UpdateAvatar = ({ userId, preview, setPreview }) => {
       loading={loading}
       preview={preview}
       setPreview={setPreview}
+      // cover={cover}
+      // setCover={setCover}
     />
   );
 };

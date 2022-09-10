@@ -3,9 +3,11 @@ import Avatar from 'react-avatar-edit';
 import {
   Alert, Button, Spinner,
 } from 'react-bootstrap';
+// import Previews from '../../upload/uploadComponent';
 
 const AvatarEdit = ({
   onSubmit, errorInfo, successInfo, loading, setPreview,
+  // cover, setCover,
 }) => {
   const onClose = () => {
     setPreview(null);
@@ -34,6 +36,7 @@ const AvatarEdit = ({
           onCrop={onCrop}
           onClose={onClose}
         />
+        {/* <Previews cover={cover} setCover={setCover} /> */}
         {/* <Image src={preview || profileImage} alt="Preview"
         width={150} height={150} magin={10} roundedCircle /> */}
       </div>

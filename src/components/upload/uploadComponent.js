@@ -40,12 +40,13 @@ const baseStyle = {
   alignItems: 'center',
   padding: '20px',
   borderWidth: 2,
-  borderRadius: 2,
-  borderColor: '#eeeeee',
+  borderRadius: 10,
+  borderColor: 'rgba(0,0,0,0.3)',
   borderStyle: 'dashed',
   backgroundColor: '#fafafa',
   color: '#bdbdbd',
   outline: 'none',
+  minHeight: 300,
   transition: 'border .24s ease-in-out',
 };
 
@@ -59,6 +60,11 @@ const acceptStyle = {
 
 const rejectStyle = {
   borderColor: '#ff1744',
+};
+
+const titleStyle = {
+  color: 'rgba(0,0,0,0.8)',
+  display: 'flex',
 };
 
 function Previews({ cover, setCover }) {
@@ -111,9 +117,9 @@ function Previews({ cover, setCover }) {
       <div {...getRootProps({ className: 'dropzone', style })}>
         <input {...getInputProps()} />
         { isDragActive ? (
-          <p>Drop the files here ...</p>
+          <p style={titleStyle}>Drop the files here ...</p>
         ) : cover.length === 0 ? (
-          <p>Drag and drop some files here, or click to select files</p>
+          <p style={titleStyle}>Drag and drop some files here, or click to select files</p>
         ) : null}
         <aside style={thumbContainer}>{thumbs}</aside>
       </div>
