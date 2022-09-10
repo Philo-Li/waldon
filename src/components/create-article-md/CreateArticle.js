@@ -22,28 +22,19 @@ const initialValues = {
   license: 'CC BY',
 };
 
-const editorContentInit = {
-  entityMap: {},
-  blocks: [{
-    key: '637gr', text: 'Type here.', type: 'unstyled', depth: 0, inlineStyleRanges: [], entityRanges: [], data: {},
-  }],
-};
-
-const source = `
-## Features
-
-- 📑 Indent line or selected text by pressing tab key, with customizable indentation.
-- 🚘 Automatic list on new lines.
-- 😻 GitHub flavored markdown support.
-- 🌒 Support dark-mode/night-mode **@v3.11.0+**.
-- 💡 Support [next.js](https://github.com/uiwjs/react-md-editor/issues/52#issuecomment-848969341), [Use examples](#support-nextjs) in [next.js](https://nextjs.org/).`;
+const editorContentInit = `这是示例
+## Waldon 新功能 **@v1.1.0**
+- 📑 添加了Markdown支持
+- 📷 增加了多种默认封面
+- 😻 改进了一些细节
+-  💡 修复了一些bug`;
 
 const Create = () => {
   const [errorInfo, setErrorInfo] = useState('');
   const [successInfo, setSuccessInfo] = useState('');
   const [loading, setLoading] = useState(false);
   const [createArticle, result] = useCreateArticle();
-  const [editorState, setEditorState] = useState(source);
+  const [editorState, setEditorState] = useState(editorContentInit);
   const userId = localStorage.getItem('userId');
   const [license, setLicense] = useState('CC BY');
   const [cover, setCover] = useState('');

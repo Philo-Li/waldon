@@ -31,6 +31,7 @@ import Create from './components/create/Create';
 import CreateArticleRTF from './components/create-article-rtf/CreateArticle';
 import CreateArticleMD from './components/create-article-md/CreateArticle';
 import Edit from './components/create-article-rtf/EditArticle';
+import MDEdit from './components/create-article-md/EditArticle';
 import logo from './img/logo/logo-w-dark-192.jpg';
 import './index.css';
 import TokenExpireModal from './components/others/TokenExpireModal';
@@ -175,6 +176,9 @@ const App = () => {
             </Route>
             <Route path="/edit/:id" exact>
               <Edit />
+            </Route>
+            <Route path="/edit_md/:id" exact>
+              <MDEdit />
             </Route>
             <Route path="/" exact>
               <Home

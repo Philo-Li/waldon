@@ -53,7 +53,11 @@ const ArticleDetailContainer = ({ articleToShow, setArticleToShow }) => {
   const articleCredit = `License: ${article.license}`;
 
   const redirectToEditPage = async () => {
-    history.push(`/edit/${articleToShow.id}`);
+    if (articleToShow.format === 'TXT') {
+      history.push(`/edit/${articleToShow.id}`);
+    } else if (articleToShow.format === 'MD') {
+      history.push(`/edit_md/${articleToShow.id}`);
+    }
   };
 
   const publishedDate = format(new Date(article.publishedAt), 'PP');

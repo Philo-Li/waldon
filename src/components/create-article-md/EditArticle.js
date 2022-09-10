@@ -18,12 +18,12 @@ const override = css`
   margin-bottom: 6rem;
 `;
 
-const editorContentInit = {
-  entityMap: {},
-  blocks: [{
-    key: '637gr', text: 'Type here.', type: 'unstyled', depth: 0, inlineStyleRanges: [], entityRanges: [], data: {},
-  }],
-};
+const editorContentInit = `这是示例
+## Waldon 新功能 **@v1.1.0**
+- 📑 添加了Markdown支持
+- 📷 增加了多种默认封面
+- 😻 改进了一些细节
+-  💡 修复了一些bug`;
 
 const Edit = () => {
   const history = useHistory();
