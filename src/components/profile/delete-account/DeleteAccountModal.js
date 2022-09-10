@@ -36,7 +36,7 @@ const DeleteAccountModal = ({
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
-            Delete your account?
+            Danger: Delete your account?
           </Modal.Title>
         </Modal.Header>
         {errorInfo && (

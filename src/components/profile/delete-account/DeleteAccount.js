@@ -4,7 +4,7 @@ import DeleteAccountModal from './DeleteAccountModal';
 
 const DeleteAccount = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const token = localStorage.getItem('philoart-token');
+  const token = localStorage.getItem('token');
 
   if (!token) return null;
 
@@ -12,7 +12,11 @@ const DeleteAccount = () => {
     <div className="p-3 container-col-settings">
       <div className="container-profile">
         <div className="profile-item">
-          <h3>Delete your account</h3>
+          <h3>
+            <b>
+              Danger: Delete your account
+            </b>
+          </h3>
         </div>
       </div>
       <div className="d-grid gap-2 margin-tb-2rem">
