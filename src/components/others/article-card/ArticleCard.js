@@ -4,14 +4,21 @@ import { Card } from 'react-bootstrap';
 import LazyLoad from 'react-lazyload';
 import { format } from 'date-fns';
 import SaveToCollectionsModal from './SaveToCollectionsModal';
+import EditModal from './edit-article-meta/EditModal';
+import DropdownButton from '../button/profile-page-article-btn/DropdownButton';
+import DeleteConfirmModal from './DeleteConfirmModal';
 import '../../../mdb.css';
 
 const ArticleCard = ({ article }) => {
   if (!article) return null;
   const history = useHistory();
   const [showCollectModal, setShowCollectModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const userId = localStorage.getItem('userId');
+  const username = localStorage.getItem('username');
   const thumb = article.thumb || 'https://cdn.philoart.io/b/700x700/ejt2Vbza56UViZTf2vEHY.jpg';
 
   const bgColor = article.color || '#84B0B3';
@@ -38,6 +45,14 @@ const ArticleCard = ({ article }) => {
       history.push('/signin');
     } else {
       setShowCollectModal(true);
+    }
+  };
+
+  const redirectToEditPage = async () => {
+    if (article.format === 'TXT') {
+      history.push(`/edit/${article.id}`);
+    } else if (article.format === 'MD') {
+      history.push(`/edit_md/${article.id}`);
     }
   };
 
@@ -115,7 +130,29 @@ const ArticleCard = ({ article }) => {
                   </div>
                 </button>
               </div>
+              <div className="article-card-btn-bookmark article-card-btn-item article-card-bookmark-btn-end">
+                {username && article.user.username === username && (
+                  <DropdownButton
+                    setShowEditModal={setShowEditModal}
+                    redirectToEditPage={redirectToEditPage}
+                    setShowDeleteModal={setShowDeleteModal}
+                  />
+                )}
+              </div>
             </div>
+            <EditModal
+              articleToShow={article}
+              // setArticleToShow={setArticleToShow}
+              showEditModal={showEditModal}
+              setShowEditModal={setShowEditModal}
+            />
+            <DeleteConfirmModal
+              id={article.id}
+              username={username}
+              itemType="Article"
+              showDeleteModal={showDeleteModal}
+              setShowDeleteModal={setShowDeleteModal}
+            />
           </Card.Title>
         </Card>
       </div>

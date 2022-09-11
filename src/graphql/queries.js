@@ -28,6 +28,7 @@ export const GET_ARTICLES = gql`
           tag
           publishedAt
           thumb
+          format
           user {
             username
             firstName
